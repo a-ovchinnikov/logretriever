@@ -1,0 +1,32 @@
+[DEFAULT]
+
+# A comma-separated list of classes used to collect statistics. For further
+# details please refer to logretriever/collectors/base.py
+collectors = SimpleCollector, SectionCollector, UserCollector
+# Class name of a class used to display data.
+representer = SimpleStatsRepresenter
+# Location of a log
+log_file = /tmp/access.log
+# An interval in seconds between two successive log file accesses.
+check_interval = 1
+# An interval in seconds between consecutive updates appearing on screen.
+statistics_interval = 3
+# Duration over which an anomaly should manifest itself before an alarm is
+# issued.
+alarm_interval = 60
+# Average of events per alarm_interval which is considered anomalous.
+alarm_threshold = 10
+# Don't fail if any collector is missing.
+ignore_missing_bits = False
+
+# A section with settings for a corresponding collector. Note, that these
+# settings override the ones in DEFAULT
+[SectionCollector]
+
+[SimpleCollector]
+alarm_interval = 10
+alarm_threshold = 5
+
+[SimpleStatsRepresenter]
+# Number of most recent alarms to remember and display.
+alarms_to_keep_track_of = 10
